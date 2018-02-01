@@ -94,7 +94,7 @@ def create_property_object(df, idx):
         home: [django model] property object generated from the data in the row
         of the listing dataframe 
     """   
-    home, created = Property.objects.update_or_create(
+    home, created = ListProperty.objects.update_or_create(
 
             # Address
             street_address_1 = df.iloc[idx]['address_address_line1'],
@@ -185,7 +185,7 @@ def iterate_through_properties_and_create_models(df):
         If a property object with the same slug already exists in the dataframe,
         this will fail.
     """
-    print('Loading properties to db:')
+    print('Loading list properties to db:')
     save_count = 0
     fail_count = 0
     for idx in range(len(df)):
@@ -201,7 +201,7 @@ def iterate_through_properties_and_create_models(df):
 def setup_environment():
     """Setup the environment"""
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rooftop.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ribbonsemble.settings")
     application = get_wsgi_application()
     print('import properties...')
 
@@ -238,7 +238,7 @@ if __name__ == '__main__':
     # Setup django environment.  Note must run from the rooftop
     setup_environment()
     # Need to import Property here and not at top of script because need env setup first.
-    from api.models import Property
+    from hedonic_model.models import ListProperty
     # Get the name of the more recently updated csv file
     csv_filename = find_latest_csvname()
     # Pull csv from google cloud storage

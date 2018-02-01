@@ -74,10 +74,8 @@ class SoldProperty(models.Model):
     has_garage = models.NullBooleanField(blank=True, null=True)
     no_pool_well_septic = models.NullBooleanField(blank=True, null=True)
     local_school_quality = models.PositiveIntegerField(blank=True, null=True)
-    rx_date_listed = models.CharField(max_length=280, blank=True, null=True)
     garage_size = models.PositiveIntegerField(blank=True, null=True) 
-    mls_listing_id = models.BigIntegerField(blank=True, null=True)
-    
+
     # =========== ImageInfo ===========
     
     img_path_header = models.CharField(max_length=280, blank=True, null=True)
