@@ -9,8 +9,6 @@ from django.core.wsgi import get_wsgi_application
 import json
 from dateutil import parser
 
-
-
 def find_latest_soldpx_csvname(specific_date='<YYYYMMDD>'):
     """Finds the newest csv name in the drive.  Can pull a specific date
        by filling in the specific date field.
@@ -45,7 +43,6 @@ def url_string_to_json(url_string):
     json_list = url_string.split(';')
     string_as_json = json.dumps(json_list)
     return string_as_json
-
 
 def create_sold_property_object(df, idx):
     """Creates django property model object when given a dataframe of new 

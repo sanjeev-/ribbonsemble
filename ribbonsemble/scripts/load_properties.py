@@ -54,7 +54,6 @@ def fetch_from_google_storage(google_storage_bucket, path_to_file, filename, des
     except Exception as e:
         print('pull failed. error message: {}'.format(e))
 
-
 def pull_last_run_date(pickle_path):
     """Pulls the last run date from a pickle file.
     
@@ -81,6 +80,7 @@ def generate_csv_filename(last_run_date_str):
     """
     csv_filename = 'data_{}.csv'.format(last_run_date_str)
     return csv_filename
+
 
 def create_property_object(df, idx):
     """Creates django property model object when given a dataframe of new 
